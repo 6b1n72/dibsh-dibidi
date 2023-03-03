@@ -11,7 +11,7 @@ class Reading(object):
         self.time = None
         self.wordCount = None
         self.learnedOrKnownWords = None
-        self.wordPerMinute = None
+        self.wordPerSecond = None
         self.percentageOfLearnedWords = None
         self.readingAbility = None
         self.conDb = sqlite3.connect("student.db")
@@ -87,9 +87,9 @@ class Reading(object):
         consist of some calculation to find out our object readingAbility.
         :return:
         """
-        self.wordPerMinute = (60 * self.wordCount) / (self.time * 60)
+        self.wordPerSecond = (60 * self.wordCount) / (self.time * 60)
         self.percentageOfLearnedWords = (self.learnedOrKnownWords/self.wordCount)*100
-        self.readingAbility = (self.wordPerMinute * self.percentageOfLearnedWords) / 100
+        self.readingAbility = (self.wordPerSecond * self.percentageOfLearnedWords) / 100
         self.createTable()
 
     def createTable(self):
